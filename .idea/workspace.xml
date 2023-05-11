@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9494258-a8a1-4c0c-bf42-8d834b9d2d3a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/ClientFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/ServerFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/TankMsg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/TankMsgDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/TankMsgEncoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/examplev2/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/examplev2/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/examplev2/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +157,7 @@
       <updated>1681926982521</updated>
       <workItem from="1681926983958" duration="2384000" />
       <workItem from="1681930500143" duration="26262000" />
-      <workItem from="1683152570859" duration="850000" />
+      <workItem from="1683152570859" duration="2985000" />
     </task>
     <servers />
   </component>

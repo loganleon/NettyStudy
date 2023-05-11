@@ -26,7 +26,7 @@ public class Server {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast(new ServerChildHandler());
+                            pipeline.addLast(new TankMsgDecoder()).addLast(new ServerChildHandler());
                         }
                     }).bind(8888)
                     .sync();
@@ -52,26 +52,29 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter {
         // msg store the data
         ByteBuf buf = null;
         try {
-            buf = (ByteBuf) msg;
-            byte[] bytes = new byte[buf.readableBytes()];
-            buf.getBytes(buf.readerIndex(), bytes);
-            String s = new String(bytes);
-            System.out.println(s);
-            ServerFrame.INSTANCE.updateClientMsg(s);
-            if (s.equals("__bye__")) {
-                ServerFrame.INSTANCE.updateServerMsg("client ask to disconnect");
-                Server.clients.remove(ctx.channel());
-                ctx.close();
-                ReferenceCountUtil.release(buf);
-            } else {
-                Server.clients.writeAndFlush(msg);
-            }
-        } finally {
-            if (buf != null) {
-                System.out.println(buf.refCnt());
+//            buf = (ByteBuf) msg;
+//            byte[] bytes = new byte[buf.readableBytes()];
+//            buf.getBytes(buf.readerIndex(), bytes);
+//            String s = new String(bytes);
+//            System.out.println(s);
+//            ServerFrame.INSTANCE.updateClientMsg(s);
+//            if (s.equals("__bye__")) {
+//                ServerFrame.INSTANCE.updateServerMsg("client ask to disconnect");
+//                Server.clients.remove(ctx.channel());
+//                ctx.close();
 //                ReferenceCountUtil.release(buf);
-                System.out.println(buf.refCnt());
-            }
+//            } else {
+//                Server.clients.writeAndFlush(msg);
+//            }
+            TankMsg tankMsg = (TankMsg) msg;
+            System.out.println(tankMsg.toString());
+        } finally {
+//            if (buf != null) {
+//                System.out.println(buf.refCnt());
+////                ReferenceCountUtil.release(buf);
+//                System.out.println(buf.refCnt());
+//            }
+            ReferenceCountUtil.release(msg);
         }
     }
 

@@ -56,7 +56,8 @@ public class Client {
 
         @Override
         protected void initChannel(SocketChannel ch) throws Exception {
-            ch.pipeline().addLast(new ClientHandler());
+            ch.pipeline()
+                    .addLast(new TankMsgEncoder()).addLast(new ClientHandler());
         }
     }
 
@@ -64,10 +65,13 @@ public class Client {
     static class ClientHandler extends ChannelInboundHandlerAdapter {
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
-            // channel first available. direct access the memory of the operating system, instead of copy to JVM
-            ByteBuf byteBuf = Unpooled.copiedBuffer("hello".getBytes());
-            // Flush automatically release the memory
-            ctx.writeAndFlush(byteBuf);
+//            // channel first available. direct access the memory of the operating system, instead of copy to JVM
+//            ByteBuf byteBuf = Unpooled.copiedBuffer("hello".getBytes());
+//            // Flush automatically release the memory
+//            ctx.writeAndFlush(byteBuf);
+
+
+            ctx.writeAndFlush(new TankMsg(3, 10));
         }
 
         @Override
